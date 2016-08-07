@@ -1,12 +1,16 @@
 #include "qimitationsokit.h"
 
-#include "clientform/clientform.h"
+
 #include <QTabWidget>
 #include <QWidget>
 #include <QLabel>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include<QLineEdit>
+#include <QLineEdit>
+
+#include "clientform/clientform.h"
+#include "serverform/serverform.h"
+
 
 QImitationSokit::QImitationSokit(QWidget *parent)
     : QDialog(parent)
@@ -14,25 +18,20 @@ QImitationSokit::QImitationSokit(QWidget *parent)
     this->tabQidget    = new QTabWidget;
 
     //new first  page
-//    QWidget * widget =  new QWidget();
-//    QLineEdit *lineEdit = new QLineEdit();
-//    QPushButton *pushButton = new QPushButton("Test");
-//    QVBoxLayout *vLayout = new QVBoxLayout();
-//    vLayout->addWidget(lineEdit);
-//    vLayout->addWidget(pushButton);
-//    widget->setLayout(vLayout);
-
-//    tabQidget->addTab(widget,"test11");
 
     clientform * client = new clientform();
-     tabQidget->addTab(client,"clinett");
+    tabQidget->addTab(client,"客户端");
 
+    serverform * server = new serverform();
+    tabQidget->addTab(server,"服务器");
 
     QHBoxLayout *layout = new QHBoxLayout();
     layout->addWidget(tabQidget);
 
     this->setLayout(layout);
-    this->resize(400, 300);
+    this->resize(850, 530);
+    this->setMinimumSize(850, 530);
+    this->setMaximumSize(850, 530);
 }
 
 QImitationSokit::~QImitationSokit()
